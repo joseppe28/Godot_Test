@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbvq8rmieqeyx"]
+[gd_scene load_steps=9 format=3 uid="uid://bbvq8rmieqeyx"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_isvf3"]
 [ext_resource type="PackedScene" uid="uid://dr1kigxe1nq7e" path="res://Enemies/enemy_spawner.tscn" id="2_70ge0"]
@@ -23,15 +23,6 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
-
-[sub_resource type="Gradient" id="Gradient_snllg"]
-offsets = PackedFloat32Array(0, 0.290323)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_s6d6n"]
-gradient = SubResource("Gradient_snllg")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 5
@@ -80,10 +71,6 @@ z_index = 5
 position = Vector2(-1, -6)
 sprite_frames = SubResource("SpriteFrames_g7uje")
 animation = &"idle"
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-texture = SubResource("GradientTexture2D_s6d6n")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
