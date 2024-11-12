@@ -1,6 +1,6 @@
 class_name Enemy extends Node2D
 
-@export var health = 100
+@export var health = 10
 @export var speed = 50 
 @export var exp = 1 
 var dead = false
