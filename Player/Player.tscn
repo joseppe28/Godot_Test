@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbvq8rmieqeyx"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_isvf3"]
+[ext_resource type="PackedScene" uid="uid://dr1kigxe1nq7e" path="res://Enemies/enemy_spawner.tscn" id="2_70ge0"]
+[ext_resource type="PackedScene" uid="uid://54mg4upjm7rt" path="res://UI/UI.tscn" id="3_utxwe"]
+[ext_resource type="Texture2D" uid="uid://cokki7khluses" path="res://Player/Art/idle.aseprite" id="4_rwp8f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukpd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hfo0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybthr"]
+atlas = ExtResource("4_rwp8f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7uje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybthr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_snllg"]
+offsets = PackedFloat32Array(0, 0.290323)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s6d6n"]
+gradient = SubResource("Gradient_snllg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 5
+script = ExtResource("1_isvf3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ukpd1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7hfo0")
+
+[node name="EnemySpawner8" parent="." instance=ExtResource("2_70ge0")]
+position = Vector2(654, 96)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("2_70ge0")]
+position = Vector2(558, -143)
+
+[node name="EnemySpawner5" parent="." instance=ExtResource("2_70ge0")]
+position = Vector2(-169, 489)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("2_70ge0")]
+position = Vector2(293, 444)
+
+[node name="EnemySpawner6" parent="." instance=ExtResource("2_70ge0")]
+position = Vector2(-566, -90)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("2_70ge0")]
+position = Vector2(-758, 150)
+
+[node name="EnemySpawner7" parent="." instance=ExtResource("2_70ge0")]
+position = Vector2(162, -352)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("2_70ge0")]
+position = Vector2(-310, -484)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_utxwe")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(-1, -6)
+sprite_frames = SubResource("SpriteFrames_g7uje")
+animation = &"idle"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+texture = SubResource("GradientTexture2D_s6d6n")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true

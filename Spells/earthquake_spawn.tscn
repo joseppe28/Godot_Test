@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://cffqlucmliv1v"]
+
+[ext_resource type="Script" path="res://Spells/code/earthquake_spawn.gd" id="1_sj75q"]
+[ext_resource type="Texture2D" uid="uid://d2lyk6qrl8jb" path="res://Spells/Art/Earthquake/Earthquake-Sheet.aseprite" id="2_qqeiq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7aw1"]
+radius = 72.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37vr7"]
+atlas = ExtResource("2_qqeiq")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx7xf"]
+atlas = ExtResource("2_qqeiq")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57125"]
+atlas = ExtResource("2_qqeiq")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljj6d"]
+atlas = ExtResource("2_qqeiq")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwf04"]
+atlas = ExtResource("2_qqeiq")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ipjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37vr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx7xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx7xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx7xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57125")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57125")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57125")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljj6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwf04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwf04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwf04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwf04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37vr7")
+}],
+"loop": false,
+"name": &"action",
+"speed": 7.0
+}]
+
+[node name="Earthquake" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_sj75q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a7aw1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -5.5)
+scale = Vector2(0.8, 0.765)
+sprite_frames = SubResource("SpriteFrames_6ipjk")
+animation = &"action"
+frame = 6
+frame_progress = 0.00785157
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

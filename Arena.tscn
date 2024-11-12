@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdjumyoxu5e0v"]
+
+[ext_resource type="Script" path="res://Scene.gd" id="1_axjo4"]
+[ext_resource type="PackedScene" uid="uid://bbvq8rmieqeyx" path="res://Player/Player.tscn" id="2_a7ke5"]
+[ext_resource type="AudioStream" uid="uid://bily5ne3wc76d" path="res://Songs/Test.wav" id="3_fxfct"]
+[ext_resource type="Texture2D" uid="uid://dboxe1aoc0rsi" path="res://Tilemap/Arena-Sheet.aseprite" id="4_k8v34"]
+
+[sub_resource type="Gradient" id="Gradient_wxpb6"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.0748663, 0.149733, 0.278075, 0.604278, 1)
+colors = PackedColorArray(0.18359, 0.18359, 0.18359, 1, 0.154876, 0.154876, 0.154876, 0.843366, 0.201526, 0.201527, 0.201527, 0.652258, 0, 0, 0, 0.376471, 0.0885598, 0.0885599, 0.0885599, 0.466667, 0, 0, 0, 0.219608)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kvq0i"]
+noise_type = 0
+seed = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qgicq"]
+width = 640
+height = 640
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_wxpb6")
+noise = SubResource("FastNoiseLite_kvq0i")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmlru"]
+texture = ExtResource("4_k8v34")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+2:0/0 = 0
+5:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ycdxb"]
+tile_size = Vector2i(32, 32)
+sources/5 = SubResource("TileSetAtlasSource_cmlru")
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_axjo4")
+
+[node name="Player" parent="." instance=ExtResource("2_a7ke5")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_fxfct")
+volume_db = 10.0
+autoplay = true
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
+z_index = -1
+repeat_size = Vector2(640, 640)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+visible = false
+z_index = -1
+texture = SubResource("NoiseTexture2D_qgicq")
+centered = false
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_ycdxb")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://duvmoymhw41l7"]
+
+[ext_resource type="Script" path="res://Menus/start_menu.gd" id="1_21tys"]
+[ext_resource type="Texture2D" uid="uid://pjvt5n2sls8q" path="res://Spells/icons/Fire_Fist.aseprite" id="2_8n8jo"]
+[ext_resource type="Texture2D" uid="uid://dhakr4qy5uxg3" path="res://Spells/icons/Summon.aseprite" id="3_ht0g2"]
+[ext_resource type="Texture2D" uid="uid://cdm1fe6tmy7fw" path="res://Spells/icons/Ice_Spikes.aseprite" id="4_yc0ry"]
+[ext_resource type="Texture2D" uid="uid://cg5aa5n08xnyv" path="res://Spells/icons/Electric_Field.aseprite" id="5_0x2tc"]
+[ext_resource type="Texture2D" uid="uid://cig47xc01dm6a" path="res://Spells/icons/Earthquake.aseprite" id="6_1wbo7"]
+[ext_resource type="Texture2D" uid="uid://217atioh7gav" path="res://Spells/icons/Posion_Flask.aseprite" id="7_api3o"]
+[ext_resource type="Texture2D" uid="uid://by2hy4cex5b53" path="res://Spells/icons/Magic_Sword.aseprite" id="8_5nbv4"]
+[ext_resource type="Texture2D" uid="uid://c77uj4x0vkmr8" path="res://Spells/icons/Whirlpool_Spawner.aseprite" id="9_pwi0u"]
+[ext_resource type="Texture2D" uid="uid://daapqeyhmfokr" path="res://Spells/icons/windblade.aseprite" id="10_2go6i"]
+[ext_resource type="Theme" uid="uid://bh2sdl21e4i4u" path="res://Themes/Buttons/Button1.tres" id="11_uvvdi"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_21tys")
+
+[node name="ItemList" type="ItemList" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+allow_search = false
+auto_height = true
+item_count = 9
+max_columns = 3
+fixed_column_width = 200
+icon_mode = 0
+item_0/text = "Fire Mage"
+item_0/icon = ExtResource("2_8n8jo")
+item_1/text = "Necromancer"
+item_1/icon = ExtResource("3_ht0g2")
+item_2/text = "Ice Mage"
+item_2/icon = ExtResource("4_yc0ry")
+item_3/text = "Electric Mage"
+item_3/icon = ExtResource("5_0x2tc")
+item_4/text = "Earth Mage"
+item_4/icon = ExtResource("6_1wbo7")
+item_5/text = "Witch"
+item_5/icon = ExtResource("7_api3o")
+item_6/text = "Magic Figther"
+item_6/icon = ExtResource("8_5nbv4")
+item_7/text = "Water Mage"
+item_7/icon = ExtResource("9_pwi0u")
+item_8/text = "Wind Mage"
+item_8/icon = ExtResource("10_2go6i")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 122.0
+offset_right = 30.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_uvvdi")
+text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

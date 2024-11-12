@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cba443ie8t0aa"]
+
+[ext_resource type="Script" path="res://Spells/code/Push.gd" id="1_keegd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dww0c"]
+radius = 0.01
+
+[node name="Push" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 4
+gravity_scale = 128.0
+freeze = true
+script = ExtResource("1_keegd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dww0c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true

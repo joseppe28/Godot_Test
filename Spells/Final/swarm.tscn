@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://do5c0xjm8750e"]
+
+[ext_resource type="Script" path="res://Spells/code/earthquake.gd" id="1_l2n1b"]
+
+[node name="Swarm" type="Node2D"]
+script = ExtResource("1_l2n1b")
+size = Vector2(0.7, 0.7)
+number = 8
+damage = 6
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

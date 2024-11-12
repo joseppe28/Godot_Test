@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://chhtc02g16b6f"]
+
+[ext_resource type="Script" path="res://UI/end.gd" id="1_angw1"]
+[ext_resource type="Texture2D" uid="uid://67xfcl30m8s1" path="res://UI/killCount.aseprite" id="2_onmdh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6vdte"]
+font_size = 50
+font_color = Color(0.894118, 0.290196, 0.0980392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dscr1"]
+font_size = 25
+font_color = Color(0.396078, 0, 0, 1)
+outline_color = Color(0.397482, 5.53504e-07, 1.68458e-07, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s72ur"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_4eskc"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_vfqa3"]
+font_size = 25
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_angw1")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_right = 135.5
+offset_bottom = 69.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_6vdte")
+
+[node name="killCount" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_dscr1")
+
+[node name="Sprite2D" type="Sprite2D" parent="killCount"]
+position = Vector2(-22, 17)
+texture = ExtResource("2_onmdh")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -90.0
+offset_right = 39.5
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continue
+"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -80.0
+offset_right = 45.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Msec" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 23.0
+offset_right = 47.0
+offset_bottom = 58.0
+text = "0"
+label_settings = SubResource("LabelSettings_s72ur")
+horizontal_alignment = 1
+
+[node name="sec" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 23.0
+offset_right = 1.0
+offset_bottom = 58.0
+text = "0"
+label_settings = SubResource("LabelSettings_4eskc")
+
+[node name="minutes" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -67.0
+offset_top = 22.0
+offset_right = -43.0
+offset_bottom = 57.0
+text = "0"
+label_settings = SubResource("LabelSettings_vfqa3")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

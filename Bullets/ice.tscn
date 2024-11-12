@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctcueha55qtea"]
+
+[ext_resource type="Texture2D" uid="uid://bkbaa1vgrcbjr" path="res://Bullets/Art/Ice_idle.aseprite" id="1_1ojvs"]
+[ext_resource type="Script" path="res://Bullets/lightning.gd" id="1_p3jor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe65e"]
+size = Vector2(10, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6jae"]
+atlas = ExtResource("1_1ojvs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hjb6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6jae")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Ice" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_p3jor")
+speed = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_pe65e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_hjb6u")
+animation = &"idle"
+autoplay = "idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

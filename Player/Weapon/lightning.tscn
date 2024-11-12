@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl66ccmhsbwk7"]
+
+[ext_resource type="Script" path="res://Player/Weapon/script/thor.gd" id="1_dtva7"]
+
+[node name="lightning" type="Node2D" groups=["Special"]]
+script = ExtResource("1_dtva7")
+
+[node name="shoot" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Special" type="Timer" parent="."]
+one_shot = true
+autostart = true

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://1b2m22y0fdyd"]
+
+[ext_resource type="Script" path="res://Bullets/lightning.gd" id="1_s5jsv"]
+[ext_resource type="Texture2D" uid="uid://doun67ys0v57d" path="res://Spells/Art/sword.aseprite" id="2_5jydh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o2od"]
+size = Vector2(35, 12)
+
+[sub_resource type="Gradient" id="Gradient_pefmx"]
+offsets = PackedFloat32Array(0, 0.265957)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l82jd"]
+gradient = SubResource("Gradient_pefmx")
+height = 50
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Sword" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_s5jsv")
+damage = 8
+speed = 70
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_7o2od")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.43051e-06, 0)
+scale = Vector2(3.25, 2.5)
+texture = ExtResource("2_5jydh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(7, 0)
+texture = SubResource("GradientTexture2D_l82jd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

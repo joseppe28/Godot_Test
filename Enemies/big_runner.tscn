@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://ttvtyf1ejblw"]
+
+[ext_resource type="Script" path="res://Enemies/stats.gd" id="1_luo3s"]
+[ext_resource type="Texture2D" uid="uid://3utxo5sam082" path="res://Enemies/Art/Runner/death-Sheet.aseprite" id="2_vg87d"]
+[ext_resource type="Texture2D" uid="uid://bgi1aeqxtk2l1" path="res://Enemies/Art/Big_runner.aseprite" id="3_rob2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3h6yj"]
+size = Vector2(48, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa1ms"]
+atlas = ExtResource("2_vg87d")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r6xu"]
+atlas = ExtResource("2_vg87d")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kswk2"]
+atlas = ExtResource("2_vg87d")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad0qa"]
+atlas = ExtResource("2_vg87d")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u13g"]
+atlas = ExtResource("2_vg87d")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbsr7"]
+atlas = ExtResource("2_vg87d")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3s3t"]
+atlas = ExtResource("3_rob2m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxc1v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa1ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r6xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kswk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad0qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u13g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbsr7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3s3t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Big_Runner" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 2
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_luo3s")
+health = 15
+speed = 100
+exp = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_3h6yj")
+debug_color = Color(0.913725, 0, 0, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -4)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_rxc1v")
+animation = &"idle"
+autoplay = "idle"

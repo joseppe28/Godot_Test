@@ -1,0 +1,188 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi6c2l4kie76x"]
+
+[ext_resource type="Script" path="res://UI/Spell_Selection.gd" id="1_an8uq"]
+[ext_resource type="Texture2D" uid="uid://cg5aa5n08xnyv" path="res://Spells/icons/Electric_Field.aseprite" id="2_yhgyh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vl60h"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_8nlo6"]
+font_size = 12
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_an8uq")
+
+[node name="Spell1" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -60.0
+offset_right = 175.0
+offset_bottom = -29.0
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "Spell1"
+
+[node name="Panel" type="Panel" parent="Spell1"]
+clip_contents = true
+layout_mode = 0
+offset_top = 30.0
+offset_right = 156.0
+offset_bottom = 224.0
+
+[node name="Info" type="Label" parent="Spell1/Panel"]
+layout_mode = 0
+offset_top = 117.0
+offset_right = 148.0
+offset_bottom = 193.0
+text = "Bal Bala bala abalaabaabala "
+label_settings = SubResource("LabelSettings_vl60h")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="Spell1/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -37.0
+offset_right = 32.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="Sprite2D" parent="Spell1/Panel/Control"]
+position = Vector2(8.5, -1)
+scale = Vector2(3, 3)
+texture = ExtResource("2_yhgyh")
+
+[node name="level" type="Label" parent="Spell1/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "LV: 1"
+label_settings = SubResource("LabelSettings_8nlo6")
+
+[node name="Spell2" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -60.0
+offset_right = 77.5
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Spell1"
+
+[node name="Panel" type="Panel" parent="Spell2"]
+clip_contents = true
+layout_mode = 0
+offset_top = 30.0
+offset_right = 156.0
+offset_bottom = 224.0
+
+[node name="Info" type="Label" parent="Spell2/Panel"]
+layout_mode = 0
+offset_top = 117.0
+offset_right = 148.0
+offset_bottom = 193.0
+text = "Bal Bala bala abalaabaabala "
+label_settings = SubResource("LabelSettings_vl60h")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="Spell2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -37.0
+offset_right = 32.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="Sprite2D" parent="Spell2/Panel/Control"]
+position = Vector2(8.5, -1)
+scale = Vector2(3, 3)
+texture = ExtResource("2_yhgyh")
+
+[node name="level" type="Label" parent="Spell2/Panel"]
+layout_mode = 0
+offset_left = 0.5
+offset_right = 40.5
+offset_bottom = 23.0
+text = "LV: 1"
+label_settings = SubResource("LabelSettings_8nlo6")
+
+[node name="Spell3" type="Button" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -60.0
+offset_right = -20.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Spell1"
+
+[node name="Panel" type="Panel" parent="Spell3"]
+clip_contents = true
+layout_mode = 0
+offset_top = 30.0
+offset_right = 156.0
+offset_bottom = 224.0
+
+[node name="Info" type="Label" parent="Spell3/Panel"]
+layout_mode = 0
+offset_top = 117.0
+offset_right = 148.0
+offset_bottom = 193.0
+text = "Bal Bala bala abalaabaabala "
+label_settings = SubResource("LabelSettings_vl60h")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="Spell3/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -37.0
+offset_right = 32.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="Sprite2D" parent="Spell3/Panel/Control"]
+position = Vector2(8.5, -1)
+scale = Vector2(3, 3)
+texture = ExtResource("2_yhgyh")
+
+[node name="level" type="Label" parent="Spell3/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "LV: 1"
+label_settings = SubResource("LabelSettings_8nlo6")
+
+[connection signal="pressed" from="Spell1" to="." method="_on_spell_1_pressed"]
+[connection signal="pressed" from="Spell2" to="." method="_on_spell_2_pressed"]
+[connection signal="pressed" from="Spell3" to="." method="_on_spell_3_pressed"]

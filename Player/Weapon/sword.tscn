@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://6ef2rnhvjtvt"]
+
+[ext_resource type="Script" path="res://Player/Weapon/sword.gd" id="1_x1tiv"]
+[ext_resource type="Texture2D" uid="uid://dbt15byp3te0g" path="res://Player/Weapon/Art/sword.aseprite" id="2_j6v52"]
+[ext_resource type="Texture2D" uid="uid://0ui2t3ndvn5k" path="res://Player/Weapon/Art/Sprite-0001.aseprite" id="3_d6d4u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5eld"]
+size = Vector2(51, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14m6u"]
+atlas = ExtResource("2_j6v52")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cey7x"]
+atlas = ExtResource("2_j6v52")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0hvq"]
+atlas = ExtResource("2_j6v52")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bk87"]
+atlas = ExtResource("2_j6v52")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msp35"]
+atlas = ExtResource("2_j6v52")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubvhi"]
+atlas = ExtResource("2_j6v52")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu4hs"]
+atlas = ExtResource("3_d6d4u")
+region = Rect2(0, 0, 25, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hhham"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14m6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cey7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0hvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bk87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msp35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubvhi")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu4hs")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Sword" type="Node2D" groups=["Special"]]
+script = ExtResource("1_x1tiv")
+damage = 20
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(26.5, 0)
+shape = SubResource("RectangleShape2D_k5eld")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(5, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_hhham")
+animation = &"attack"
+autoplay = "idle"
+frame = 5
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
